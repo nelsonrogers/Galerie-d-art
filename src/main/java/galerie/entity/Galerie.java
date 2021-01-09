@@ -1,4 +1,5 @@
 package galerie.entity;
+import java.util.List;
 import javax.persistence.*;
 import lombok.*;
 
@@ -7,7 +8,7 @@ import lombok.*;
 // On utilise Lombok pour auto-générer getter / setter / toString...
 // cf. https://examples.javacodegeeks.com/spring-boot-with-lombok/
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
-@Entity // Une entité JPA
+@Entity // Une entité JPQ
 public class Galerie {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Integer id;
@@ -21,4 +22,6 @@ public class Galerie {
     private String adresse;
     
     // TODO : Mettre en oeuvre la relation oneToMany vers Exposition
+    @OneToMany(mappedBy = "galerie")
+    private List<Exposition> expositions;
 }
