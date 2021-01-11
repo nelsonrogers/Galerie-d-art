@@ -6,6 +6,8 @@
 package galerie.entity;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.*;
 import lombok.*;
 
@@ -19,7 +21,7 @@ public class Exposition {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Integer id;
     
-    @Column(unique=true)
+    @Column
     @NonNull
     private LocalDate debut;
     
@@ -27,11 +29,25 @@ public class Exposition {
     @NonNull
     private String intitule;
     
-    @Column(unique=true)
+    @Column
     @NonNull
     private Integer duree;
     
     @ManyToOne
     private Galerie galerie;
+    
+    @OneToMany(mappedBy="lieuDeVente")
+    List<Transaction> transactions = new LinkedList<>();
+    
+    @ManyToMany
+    List<Tableau> oeuvres = new LinkedList<>();
+    
+    public float chiffreAffaires() {
+        float ca = 0;
+        for (Transaction transaction : transactions){
+            ca += transaction.getPrixVente();
+        }
+        return ca;
+    }
     
 }

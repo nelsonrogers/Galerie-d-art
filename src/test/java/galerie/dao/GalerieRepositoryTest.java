@@ -27,5 +27,6 @@ public class GalerieRepositoryTest {
         long nombre = galerieDAO.count();
         assertEquals(combienDansLeJeuDeTest, nombre, "On doit trouver 1 galerie" );
     }
-
+    
+    
 }

@@ -5,6 +5,8 @@
  */
 package galerie.entity;
 
+import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.*;
 import lombok.*;
 
@@ -19,5 +21,8 @@ public class Artiste extends Personne{
     @Column(unique=true)
     @NonNull
     private String biographie;
+    
+    @OneToMany(mappedBy="artiste")
+    List<Tableau> tableaux = new LinkedList<>();
     
 }

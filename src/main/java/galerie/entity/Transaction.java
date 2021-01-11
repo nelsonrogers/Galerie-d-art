@@ -19,12 +19,21 @@ public class Transaction {
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(unique=true)
+    @Column
     @NonNull
     private LocalDate venduLe;
     
     @Column
     @NonNull
     private Float prixVente;
+    
+    @ManyToOne
+    Exposition lieuDeVente;
+    
+    @OneToOne(mappedBy="transaction")
+    Tableau tableau;
+    
+    @ManyToOne
+    Personne acheteur;
     
 }
