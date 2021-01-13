@@ -40,7 +40,7 @@ public class Tableau {
     @ManyToMany(mappedBy = "oeuvres")
     List<Exposition> expositions = new LinkedList<>();
     
-    @OneToOne
+    @OneToOne(mappedBy="tableau")
     Transaction transaction;
     
     // Artist can be None

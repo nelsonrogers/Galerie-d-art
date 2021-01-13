@@ -10,6 +10,12 @@
 <body>
 	<h1>Exemple</h1>
 	<h2 th:text="${message}">My Thymeleaf Error Page</h2>
+        
+        <p th:if="${#lists.isEmpty(prenoms)}">Aucune galerie à afficher</p>
+        
+        <ul th:unless="${#lists.isEmpty(prenoms)}">
+            <li th:each="g : ${listegaleries}" th:text="${g}"/>
+        </ul>
 </body>
 
 </html>

@@ -30,7 +30,7 @@ public class Transaction {
     @ManyToOne
     Exposition lieuDeVente;
     
-    @OneToOne(mappedBy="transaction")
+    @OneToOne
     Tableau tableau;
     
     @ManyToOne
